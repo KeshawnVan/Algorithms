@@ -30,4 +30,5 @@ public interface BinaryTree<T> extends Tree<T> {
         postTraversing(getRight(node));
         System.out.println(node.data);
     }
+
 }

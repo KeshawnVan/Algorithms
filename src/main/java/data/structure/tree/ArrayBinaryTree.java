@@ -7,6 +7,7 @@ import java.util.function.Function;
 public class ArrayBinaryTree<T> implements BinaryTree<T> {
 
     private static final int ROOT_INDEX = 1;
+
     private Object[] items;
 
     public ArrayBinaryTree() {
