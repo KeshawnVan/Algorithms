@@ -7,16 +7,16 @@ public class TestArrayBinaryTree {
     private BinaryTree<String> arrayBinaryTree = new ArrayBinaryTree<>();
 
     {
-        TreeNode<String> root = arrayBinaryTree.setRoot(new ArrayBinaryTreeNode<>("A"));
+        TreeNode<String> root = arrayBinaryTree.setRoot("A");
 
-        TreeNode<String> b = arrayBinaryTree.setLeft(root, new ArrayBinaryTreeNode<>("B"));
-        TreeNode<String> c = arrayBinaryTree.setRight(root, new ArrayBinaryTreeNode<>("C"));
+        TreeNode<String> b = arrayBinaryTree.setLeft(root, "B");
+        TreeNode<String> c = arrayBinaryTree.setRight(root, "C");
 
-        arrayBinaryTree.setLeft(b, new ArrayBinaryTreeNode<>("D"));
-        arrayBinaryTree.setRight(b, new ArrayBinaryTreeNode<>("E"));
+        arrayBinaryTree.setLeft(b, "D");
+        arrayBinaryTree.setRight(b, "E");
 
-        arrayBinaryTree.setLeft(c, new ArrayBinaryTreeNode<>("F"));
-        arrayBinaryTree.setRight(c, new ArrayBinaryTreeNode<>("G"));
+        arrayBinaryTree.setLeft(c, "F");
+        arrayBinaryTree.setRight(c, "G");
     }
 
     @Test

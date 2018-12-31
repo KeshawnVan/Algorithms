@@ -6,25 +6,17 @@ public class TestLinkedBinaryTree {
 
     private BinaryTree<String> binaryTree = new LinkedBinaryTree<>();
 
-    private LinkedBinaryTreeNode<String> a = new LinkedBinaryTreeNode<>("A");
-    private LinkedBinaryTreeNode<String> b = new LinkedBinaryTreeNode<>("B");
-    private LinkedBinaryTreeNode<String> c = new LinkedBinaryTreeNode<>("C");
-    private LinkedBinaryTreeNode<String> d = new LinkedBinaryTreeNode<>("D");
-    private LinkedBinaryTreeNode<String> e = new LinkedBinaryTreeNode<>("E");
-    private LinkedBinaryTreeNode<String> f = new LinkedBinaryTreeNode<>("F");
-    private LinkedBinaryTreeNode<String> g = new LinkedBinaryTreeNode<>("G");
-
     {
-        binaryTree.setRoot(a);
+        TreeNode<String> root = binaryTree.setRoot("A");
 
-        binaryTree.setLeft(a, b);
-        binaryTree.setRight(a, c);
+        TreeNode<String> b = binaryTree.setLeft(root, "B");
+        TreeNode<String> c = binaryTree.setRight(root, "C");
 
-        binaryTree.setLeft(b, d);
-        binaryTree.setRight(b, e);
+        binaryTree.setLeft(b, "D");
+        binaryTree.setRight(b, "E");
 
-        binaryTree.setLeft(c, f);
-        binaryTree.setRight(c, g);
+        binaryTree.setLeft(c, "F");
+        binaryTree.setRight(c, "G");
     }
 
     @Test

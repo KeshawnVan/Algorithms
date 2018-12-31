@@ -4,6 +4,13 @@ public class TreeNode<T> {
 
     protected T data;
 
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "data=" + data +
+                '}';
+    }
+
     public T getData() {
         return data;
     }

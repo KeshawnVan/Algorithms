@@ -15,6 +15,15 @@ public class LinkedBinaryTreeNode<T> extends TreeNode<T> {
         super.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "\nLinkedBinaryTreeNode{" +
+                "data=" + data +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
+
     public LinkedBinaryTreeNode<T> getParent() {
         return parent;
     }

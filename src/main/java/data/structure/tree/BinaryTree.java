@@ -6,9 +6,9 @@ public interface BinaryTree<T> extends Tree<T> {
 
     TreeNode<T> getRight(TreeNode<T> node);
 
-    TreeNode<T> setLeft(TreeNode<T> parent, TreeNode<T> left);
+    TreeNode<T> setLeft(TreeNode<T> parent, T data);
 
-    TreeNode<T> setRight(TreeNode<T> parent, TreeNode<T> right);
+    TreeNode<T> setRight(TreeNode<T> parent, T data);
 
     default void preTraversing(TreeNode<T> node) {
         if (node == null) return;

@@ -16,6 +16,14 @@ public class ArrayBinaryTreeNode<T> extends TreeNode<T> {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "ArrayBinaryTreeNode{" +
+                "index=" + index +
+                ", data=" + data +
+                '}';
+    }
+
     public Integer getIndex() {
         return index;
     }

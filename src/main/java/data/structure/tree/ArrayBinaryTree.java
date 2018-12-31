@@ -39,22 +39,20 @@ public class ArrayBinaryTree<T> implements BinaryTree<T> {
     }
 
     @Override
-    public TreeNode<T> setLeft(TreeNode<T> parent, TreeNode<T> left) {
+    public TreeNode<T> setLeft(TreeNode<T> parent, T data) {
         return mapWithCheck(parent, parentNode -> {
-            ArrayBinaryTreeNode<T> leftNode = mapWithCheck(left, x -> x);
             int leftIndex = calculateLeftIndex(parentNode.getIndex());
-            setValue(leftIndex, leftNode.getData());
-            return new ArrayBinaryTreeNode<>(leftIndex, leftNode.data);
+            setValue(leftIndex, data);
+            return data == null ? null : new ArrayBinaryTreeNode<>(leftIndex, data);
         });
     }
 
     @Override
-    public TreeNode<T> setRight(TreeNode<T> parent, TreeNode<T> right) {
+    public TreeNode<T> setRight(TreeNode<T> parent, T data) {
         return mapWithCheck(parent, parentNode -> {
-            ArrayBinaryTreeNode<T> rightNode = mapWithCheck(right, x -> x);
             int rightIndex = calculateRightIndex(parentNode.getIndex());
-            setValue(rightIndex, rightNode.getData());
-            return new ArrayBinaryTreeNode<>(rightIndex, rightNode.data);
+            setValue(rightIndex, data);
+            return data == null ? null : new ArrayBinaryTreeNode<>(rightIndex, data);
         });
     }
 
@@ -66,9 +64,10 @@ public class ArrayBinaryTree<T> implements BinaryTree<T> {
     }
 
     @Override
-    public TreeNode<T> setRoot(TreeNode<T> node) {
-        setValue(ROOT_INDEX, node.data);
-        ArrayBinaryTreeNode<T> root = mapWithCheck(node, x -> x);
+    public TreeNode<T> setRoot(T data) {
+        if (data == null) return null;
+        setValue(ROOT_INDEX, data);
+        ArrayBinaryTreeNode<T> root = new ArrayBinaryTreeNode<>(data);
         root.setIndex(ROOT_INDEX);
         return root;
     }
