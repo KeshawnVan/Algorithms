@@ -21,6 +21,7 @@ Data structures and algorithms analysis practice in Java
 ## Tree
 * LinkedBinaryTree
 * ArrayBinaryTree
+* Heap
 
 ## Sort
 * BubbleSort
@@ -28,6 +29,7 @@ Data structures and algorithms analysis practice in Java
 * InsertionSort
 * MergeSort
 * QuickSort
+* HeapSort
 
 ## Search
 * BinarySearch
