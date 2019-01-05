@@ -37,5 +37,7 @@ Data structures and algorithms analysis practice in Java
 ## Search
 * BinarySearch
 * SearchSquareRoot
+* BreadthFirstSearch
+* DepthFirstSearch
 
 

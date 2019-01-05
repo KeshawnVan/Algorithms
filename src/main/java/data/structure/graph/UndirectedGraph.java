@@ -20,4 +20,12 @@ public class UndirectedGraph {
         adj[s].add(t);
         adj[t].add(s);
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public LinkedList<Integer>[] getAdj() {
+        return adj;
+    }
 }
