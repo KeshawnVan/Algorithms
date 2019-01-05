@@ -8,33 +8,47 @@ import java.util.Iterator;
 public class SortedLinkedListMerge {
 
     public LinkedList<Integer> merge(LinkedList<Integer> list1, LinkedList<Integer> list2) {
+
         LinkedList<Integer> result = new SingleLinkedList<>();
         Iterator<Integer> iterator1 = list1.iterator();
         Iterator<Integer> iterator2 = list2.iterator();
-        boolean needNext1 = true;
-        boolean needNext2 = true;
+
         Integer next1 = null;
         Integer next2 = null;
-        while (iterator1.hasNext() && iterator2.hasNext()) {
-            if (needNext1) {
-                next1 = iterator1.next();
+
+        while (iterator1.hasNext() || iterator2.hasNext() || next1 != null || next2 != null) {
+
+            if (next1 == null) {
+                next1 = iterator1.hasNext() ? iterator1.next() : null;
             }
-            if (needNext2) {
-                next2 = iterator2.next();
+            if (next2 == null) {
+                next2 = iterator2.hasNext() ? iterator2.next() : null;
             }
-            if (next1 < next2) {
+
+            if (next1 != null && next2 == null) {
                 result.append(next1);
-                needNext1 = true;
-                needNext2 = false;
-            } else if (next1.equals(next2)) {
-                result.append(next1);
+                next1 = null;
+            }
+
+            if (next1 == null && next2 != null) {
                 result.append(next2);
-                needNext1 = true;
-                needNext2 = true;
-            } else {
-                result.append(next2);
-                needNext1 = false;
-                needNext2 = true;
+                next2 = null;
+            }
+
+            if (next1 != null && next2 != null) {
+                if (next1 < next2) {
+                    result.append(next1);
+                    next1 = null;
+
+                } else if (next1.equals(next2)) {
+                    result.append(next1);
+                    result.append(next2);
+                    next1 = null;
+                    next2 = null;
+                } else {
+                    result.append(next2);
+                    next2 = null;
+                }
             }
         }
         return result;
@@ -47,6 +61,7 @@ public class SortedLinkedListMerge {
         list1.append(5);
         list1.append(8);
         list1.append(9);
+        list1.append(11);
         SingleLinkedList<Integer> list2 = new SingleLinkedList<>();
         list2.append(2);
         list2.append(3);
