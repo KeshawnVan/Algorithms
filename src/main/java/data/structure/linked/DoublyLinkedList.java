@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 /**
  * 双向链表
+ *
  * @param <T>
  */
 public class DoublyLinkedList<T> implements LinkedList<T> {
@@ -102,14 +103,23 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) {
+        if (index < 0 || index >= size()) return null;
         if (index == 0) return header == null ? null : header.getData();
-        DoublyLinkedListNode<T> next = header;
-        for (int i = 1; i <= index; i++) {
-            next = next.getNext();
-            if (next == null) break;
+        DoublyLinkedListNode node;
+        if (index < (size() >> 1)) {
+            node = header;
+            for (int i = 0; i < index; i++) {
+                node = node.getNext();
+            }
+        } else {
+            node = footer;
+            for (int i = size(); i > index; i--) {
+                node = node.getPrevious();
+            }
         }
-        return next == null ? null : next.getData();
+        return (T) node.getData();
     }
 
     /**
