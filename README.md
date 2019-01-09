@@ -40,7 +40,7 @@ Data structures and algorithms analysis practice in Java
 * BreadthFirstSearch
 * DepthFirstSearch
 
-## calculate
+## Calculate
 * InfixToPostfix
 * PostfixExpressionCalculate
 
