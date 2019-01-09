@@ -5,22 +5,40 @@ import data.structure.stack.Stack;
 
 public class InfixToPostfix {
 
+    private static final char BLANK = ' ';
+
     public static String cast(String expression) {
         StringBuilder result = new StringBuilder();
         Stack<Character> stack = new ArrayStack<>();
         for (char item : expression.toCharArray()) {
-            if (item == ' ') continue;
+            if (isBlank(item)) continue;
+
             if (isOperand(item)) {
                 result.append(item);
-            } else {
-                if (stack.peek() == null || item == '(' || stack.peek() == '(' || notBracket(item) && getPriority(stack.peek()) < getPriority(item)) {
+            } else if (item == '(' || stack.peek() == null) {
+                stack.push(item);
+            } else if (item == ')') {
+                while (stack.peek() != null) {
+                    Character character = stack.pop();
+                    if (character == '(') {
+                        break;
+                    } else {
+                        result.append(BLANK).append(character).append(BLANK);
+                    }
+                }
+            } else if (notBracket(item)) {
+                if (getPriority(stack.peek()) < getPriority(item)) {
                     stack.push(item);
                 } else {
-                    if (stack.peek() == null) continue;
-
-                    pop(result, stack, item);
-
-                    push(stack, item);
+                    while (stack.peek() != null && getPriority(stack.peek()) >= getPriority(item)) {
+                        Character character = stack.peek();
+                        if (character == '(') {
+                            break;
+                        } else {
+                            result.append(BLANK).append(stack.pop()).append(BLANK);
+                        }
+                    }
+                    stack.push(item);
                 }
             }
         }
@@ -30,25 +48,8 @@ public class InfixToPostfix {
         return result.toString();
     }
 
-    private static void push(Stack<Character> stack, char item) {
-        if (notBracket(item)) {
-            stack.push(item);
-        }
-    }
-
-    private static void pop(StringBuilder result, Stack<Character> stack, char item) {
-        while (stack.peek() != null && (item == ')' || notBracket(item) && getPriority(stack.peek()) >= getPriority(item))) {
-            Character character = stack.peek();
-            if (character == '(') {
-                if (item == ')') {
-                    stack.pop();
-                }
-                break;
-            } else {
-                result.append(" ").append(character).append(" ");
-                stack.pop();
-            }
-        }
+    private static boolean isBlank(char item) {
+        return item == BLANK;
     }
 
     private static boolean notBracket(char item) {
