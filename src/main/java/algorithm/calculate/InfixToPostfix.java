@@ -23,7 +23,7 @@ public class InfixToPostfix {
                     if (character == '(') {
                         break;
                     } else {
-                        result.append(BLANK).append(character).append(BLANK);
+                        result.append(character);
                     }
                 }
             } else if (notBracket(item)) {
@@ -35,7 +35,7 @@ public class InfixToPostfix {
                         if (character == '(') {
                             break;
                         } else {
-                            result.append(BLANK).append(stack.pop()).append(BLANK);
+                            result.append(stack.pop());
                         }
                     }
                     stack.push(item);
@@ -43,7 +43,7 @@ public class InfixToPostfix {
             }
         }
         while (stack.peek() != null) {
-            result.append(" ").append(stack.pop()).append(" ");
+            result.append(stack.pop());
         }
         return result.toString();
     }
