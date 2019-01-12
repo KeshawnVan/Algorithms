@@ -44,4 +44,8 @@ Data structures and algorithms analysis practice in Java
 * InfixToPostfix
 * PostfixExpressionCalculate
 
+## Backtracking
+* DepthFirstSearch
+* EightQueenProblem
+
 
