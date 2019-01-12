@@ -47,5 +47,6 @@ Data structures and algorithms analysis practice in Java
 ## Backtracking
 * DepthFirstSearch
 * EightQueenProblem
+* KnapsackProblem
 
 
