@@ -67,6 +67,10 @@ public class KnapsackProblem {
                 }
             }
         }
+        return getMaxValue(values);
+    }
+
+    private static int getMaxValue(int[] values) {
         int maxValue = -1;
         for (int value : values) {
             if (value > maxValue) {
