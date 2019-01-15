@@ -46,10 +46,42 @@ public class KnapsackProblem {
         return 0;
     }
 
+    public static int calculateValue(int[] itemWeights, int[] itemValues, int weight) {
+        int[] values = new int[weight + 1];
+        for (int i = 1; i <= weight; i++) {
+            values[i] = -1;
+        }
+        values[0] = 0;
+        values[itemWeights[0]] = itemValues[0];
+        return calculateValue(itemWeights, itemValues, weight, values);
+    }
+
+    public static int calculateValue(int[] itemWeights, int[] itemValues, int weight, int[] values) {
+        for (int i = 1; i < itemWeights.length; i++) {
+            for (int j = weight - itemWeights[i]; j >= 0; j--) {
+                if (values[j] >= 0) {
+                    int value = values[j] + itemValues[i];
+                    if (value > values[j + itemWeights[i]]) {
+                        values[j + itemWeights[i]] = value;
+                    }
+                }
+            }
+        }
+        int maxValue = -1;
+        for (int value : values) {
+            if (value > maxValue) {
+                maxValue = value;
+            }
+        }
+        return maxValue;
+    }
+
 
     public static void main(String[] args) {
         int[] items = new int[]{5, 7, 4, 5, 7, 3, 9, 4, 6};
+        int[] values = new int[]{5, 7, 5, 5, 7, 3, 9, 4, 6};
         System.out.println(calculate(items, 49));
         System.out.println(advanceCalculate(items, 49));
+        System.out.println(calculateValue(items, values, 49));
     }
 }
