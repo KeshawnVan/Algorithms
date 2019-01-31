@@ -35,4 +35,38 @@ public class TestHeap {
         HeapSort.sort(ints);
         System.out.println(Arrays.toString(ints));
     }
+
+    @Test
+    public void testFindSingle() {
+        int[] items = {4, 1, 2, 1, 2, 4, 3};
+
+        int n = 0;
+        for (int i = 0; i < items.length; i++) {
+            n = n ^ items[i];
+        }
+        System.out.println(n);
+
+        Heap heap = new Heap(items);
+        Integer last = heap.removeMax();
+        for (int i = 0; i < items.length; i++) {
+            int current = heap.removeMax();
+            if (last == null) {
+                last = current;
+            } else if (last == current) {
+                last = null;
+            } else {
+                break;
+            }
+        }
+        System.out.println(last);
+
+
+    }
+
+    @Test
+    public void testNewHeap() {
+        Integer[] items = {4, 1, 2, 1, 2, 4, 3, 5};
+        MaxHeap<Integer> integerHeap = new MaxHeap<>(items);
+        System.out.println(integerHeap);
+    }
 }

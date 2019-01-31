@@ -70,8 +70,8 @@ public class Heap {
             int maxIndex = index;
             int leftIndex = getLeftIndex(index);
             int rightIndex = getRightIndex(index);
-            if (leftIndex <= count - 1 && items[leftIndex] > items[maxIndex]) maxIndex = leftIndex;
-            if (rightIndex <= count - 1 && items[rightIndex] > items[maxIndex]) maxIndex = rightIndex;
+            if (leftIndex < count && items[leftIndex] > items[maxIndex]) maxIndex = leftIndex;
+            if (rightIndex < count && items[rightIndex] > items[maxIndex]) maxIndex = rightIndex;
             if (maxIndex == index) break;
             swap(items, maxIndex, index);
             index = maxIndex;
