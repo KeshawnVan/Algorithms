@@ -1,5 +1,8 @@
 package data.structure.tree;
 
+import data.structure.stack.LinkedStack;
+import data.structure.stack.Stack;
+
 public interface BinaryTree<T> extends Tree<T> {
 
     TreeNode<T> getLeft(TreeNode<T> node);
@@ -31,4 +34,21 @@ public interface BinaryTree<T> extends Tree<T> {
         System.out.println(node.data);
     }
 
+    default void noneRecursionPre(TreeNode<T> node) {
+        Stack<TreeNode<T>> stack = new LinkedStack<>();
+        while (node != null || stack.peek() != null) {
+            while (node != null) {
+                System.out.println(node.data);
+                stack.push(node);
+                node = getLeft(node);
+            }
+            if (stack.peek() != null) {
+                node = getRight(stack.pop());
+            }
+        }
+    }
+
+    default void noneRecursionIn(TreeNode<T> node) {
+
+    }
 }

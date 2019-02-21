@@ -22,6 +22,8 @@ public class TestArrayBinaryTree {
     @Test
     public void preTraversing() {
         arrayBinaryTree.preTraversing(arrayBinaryTree.getRoot());
+        System.out.println("--------------------------");
+        arrayBinaryTree.noneRecursionPre(arrayBinaryTree.getRoot());
     }
 
     @Test
