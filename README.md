@@ -57,4 +57,5 @@ Data structures and algorithms analysis practice in Java
 * IntegerReverse
 * ValidBracket
 * RemoveDuplicates
+* RemoveElement
 
