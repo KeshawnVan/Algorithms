@@ -64,7 +64,7 @@ public class TwoSum {
     }
 
 
-    static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 
