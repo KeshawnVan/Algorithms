@@ -59,5 +59,6 @@ Data structures and algorithms analysis practice in Java
 * RemoveDuplicates
 * RemoveElement
 * MergeTwoLinkedList
+* MaxSubArray
 
 
