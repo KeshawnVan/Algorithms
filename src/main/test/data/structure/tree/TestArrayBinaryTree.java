@@ -29,10 +29,14 @@ public class TestArrayBinaryTree {
     @Test
     public void inTraversing() {
         arrayBinaryTree.inTraversing(arrayBinaryTree.getRoot());
+        System.out.println("--------------------------");
+        arrayBinaryTree.noneRecursionIn(arrayBinaryTree.getRoot());
     }
 
     @Test
     public void postTraversing() {
         arrayBinaryTree.postTraversing(arrayBinaryTree.getRoot());
+        System.out.println("--------------------------");
+        arrayBinaryTree.noneRecursionPost(arrayBinaryTree.getRoot());
     }
 }

@@ -3,6 +3,9 @@ package data.structure.tree;
 import data.structure.stack.LinkedStack;
 import data.structure.stack.Stack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public interface BinaryTree<T> extends Tree<T> {
 
     TreeNode<T> getLeft(TreeNode<T> node);
@@ -49,6 +52,40 @@ public interface BinaryTree<T> extends Tree<T> {
     }
 
     default void noneRecursionIn(TreeNode<T> node) {
+        Stack<TreeNode<T>> stack = new LinkedStack<>();
+        while (node != null || stack.peek() != null) {
+            while (node != null) {
+                stack.push(node);
+                node = getLeft(node);
+            }
+
+            if (stack.peek() != null) {
+                TreeNode<T> pop = stack.pop();
+                System.out.println(pop.data);
+                node = getRight(pop);
+            }
+        }
+    }
+
+    default void noneRecursionPost(TreeNode<T> node) {
+        Stack<TreeNode<T>> stack = new LinkedStack<>();
+        Map<TreeNode<T>, Boolean> visited = new HashMap<>();
+        while (node != null || stack.peek() != null) {
+            while (node != null) {
+                stack.push(node);
+                node = getLeft(node);
+            }
+            if (stack.peek() != null) {
+                TreeNode<T> peek = stack.peek();
+                if (visited.get(peek) == null) {
+                    node = getRight(peek);
+                    visited.put(peek, Boolean.TRUE);
+                } else {
+                    System.out.println(stack.pop().data);
+                }
+            }
+        }
+
 
     }
 }
