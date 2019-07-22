@@ -9,8 +9,8 @@ public class AddTwoLinkedList {
 
     public static IntNode add(IntNode node1, IntNode node2) {
         System.out.printf("sum %s and %s \n", node1, node2);
-        IntNode revertNode1 = revert(node1);
-        IntNode revertNode2 = revert(node2);
+        IntNode revertNode1 = rRevert(node1);
+        IntNode revertNode2 = rRevert(node2);
         IntNode result = null;
         int carry = 0;
         while (revertNode1 != null || revertNode2 != null) {
@@ -35,15 +35,24 @@ public class AddTwoLinkedList {
     }
 
     private static IntNode revert(IntNode header) {
-        IntNode prev = null;
-        IntNode node = header;
-        while (node != null) {
-            IntNode next = node.next;
-            node.next = prev;
-            prev = node;
-            node = next;
-        }
-        return prev;
+       IntNode prev = null;
+       IntNode node = header;
+       while (node != null) {
+           IntNode next = node.next;
+           node.next = prev;
+           prev = node;
+           node = next;
+       }
+       return prev;
+    }
+
+    private static IntNode rRevert(IntNode node) {
+        if (node == null || node.next == null) return node;
+        IntNode next = node.next;
+        node.next = null;
+        IntNode result = rRevert(next);
+        next.next = node;
+        return result;
     }
 
     static class IntNode {
